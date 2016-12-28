@@ -4,4 +4,8 @@
 Today is <%= Time.now.strftime('%A') %> <br>
 
 
-<%= "@message_controller: #{@message_controller}"%>
+<%= "@message_controller: #{@message_controller}"%> <br>
+
+<%= params[:id]  if (params.has_key?(:id)) %> <br>
+
+<%= " @id_controller : #{ @id_controller }" %>

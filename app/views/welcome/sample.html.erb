@@ -6,4 +6,13 @@
 
 <% 31.times do |i|  %>
   <%= i %>
-<% end %>
+<% end %> <br>
+
+
+
+<%# link_to using controller + action %>
+<%= link_to("Go to index", { :controller => :welcome , :action => :index}) %> <br>
+
+
+<%# link_to using action only %>
+<%= link_to("Go to Help", {:action => 'help', :id => 45} ) %>
