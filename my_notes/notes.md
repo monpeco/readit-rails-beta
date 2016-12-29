@@ -47,3 +47,74 @@ Access denied for user 'root'@'localhost' (using password: YES)
         
     2. mysql -u root -p (luego otro enter)
     3. me doy cuenta que no tengo porque ponerle password, y que se lo debo quitar del database.yml
+
+--
+
+###Create a controller
+rails generate controller wellcome index
+
+###Cambiar el root del sitio
+`routes.rb`
+ #root 'welcome#index'
+  root 'welcome#index'
+
+###Agregar texto simple a index view
+`index.html.erb`
+<%= 'Count to 10' %> <br>
+
+<% 11.times do |i|  %>
+  <%= i %>
+<% end %>
+    
+
+###agregar otra vista
+`sample.html.erb`
+<%= 'Count to 10' %> <br>
+
+<% 31.times do |i|  %>
+  <%= i %>
+<% end %>
+
+###error
+No route matches [GET] "/welcome/sample"
+
+###Cambiar el root del sitio (funcionó)
+`routes.rb`
+  get 'welcome/sample'
+  
+###Método alternativo
+`routes.rb`
+  #get 'welcome/index'
+  #get 'welcome/sample'
+  match ':controller(/:action(/:id))', :via => :get    
+
+
+###Enviar mensaje desde el controller a la vista
+  def help
+    @message_controller = 'Message send from WelcomeController'
+  end 
+
+###recibir mensaje en la vista desde el controller
+`help.html.erb`
+<%= "@message_controller: #{@message_controller}"%> <br>
+
+
+###enviar mensaje via parametro al controller
+`welcome_controller.rb`
+  def help
+    @message_controller = 'Message send from WelcomeController'
+    if (params.has_key?(:id))
+      @id_controller = params[:id] + '001'
+    end
+  end 
+  
+###enviar mensaje via parametro directo a otra vista
+`sample.html.erb`
+<%# link_to using action only %>
+<%= link_to("Go to Help", {:action => 'help', :id => 45} ) %>
+
+`help.html.erb`
+<%= params[:id]  if (params.has_key?(:id)) %> <br>
+
+###bitnami
+###wappstack
