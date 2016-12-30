@@ -118,3 +118,9 @@ No route matches [GET] "/welcome/sample"
 
 ###bitnami
 ###wappstack
+
+###Conect db
+rake db:schema:dump
+
+###Execute migration
+rake db:migrate

@@ -23,3 +23,12 @@ mysql -u readidadmin -p
 
 ###Conect db
 rake db:schema:dump
+
+###mostrar estructura
+desc users;
+
+###ver el status de las migraciones
+rake db:migrate:status
+
+###ir a una migracion en particular
+rake db:migrate VERSION=0
