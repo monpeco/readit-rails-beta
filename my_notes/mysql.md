@@ -15,6 +15,11 @@ GRANT ALL PRIVILEGES ON readit_development.*
 to 'readidadmin'@'localhost'
 IDENTIFIED BY 'password';
 
+###exit msql
 EXIT
 
+###renter mysql
+mysql -u readidadmin -p
 
+###Conect db
+rake db:schema:dump
